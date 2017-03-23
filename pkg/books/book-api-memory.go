@@ -6,6 +6,14 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
+/**
+* BookAPIMemory uses Mutex
+* http://www.alexedwards.net/blog/understanding-mutexes
+*
+* Every incomming call is handeled in a new goroutine,
+* so sharing resources between endpoints can lead to race conditions
+ */
+
 // BookAPIMemory ...
 type BookAPIMemory struct {
 	sync.RWMutex

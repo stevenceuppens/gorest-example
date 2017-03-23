@@ -5,6 +5,13 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
+/**
+* BookAPIMongo doen not use Mutex
+*
+* Instead it uses session.Copy() from mgo library
+* this creates (safely) a new session for each goroutine
+ */
+
 // BookAPIMongo ...
 type BookAPIMongo struct {
 	session *mgo.Session
